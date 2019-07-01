@@ -1,6 +1,6 @@
 package com.igorhenss.SliceNdiceS.SliceNdiceS.enums;
 
-public enum Mastery {
+public enum Occupation {
 
     ALCHEMIST, ASSASSIN, BLACKSMITH, GUARD, HERO, HIREE, HUNTER, LOOTER
 
