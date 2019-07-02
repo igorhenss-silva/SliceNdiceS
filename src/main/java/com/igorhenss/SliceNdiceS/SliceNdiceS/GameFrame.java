@@ -33,7 +33,7 @@ public class GameFrame extends JPanel implements ActionListener {
 
         player.draw(graphics2D);
 
-        Enemy++
+        goblin = new Enemy(200, 400);
         goblin.draw(graphics2D);
     }
 
