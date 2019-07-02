@@ -1,5 +1,6 @@
 package com.igorhenss.SliceNdiceS.SliceNdiceS.entity;
 
+import com.igorhenss.SliceNdiceS.SliceNdiceS.GameFrame;
 import com.igorhenss.SliceNdiceS.SliceNdiceS.enums.Occupation;
 import com.igorhenss.SliceNdiceS.SliceNdiceS.enums.Race;
 import com.igorhenss.SliceNdiceS.SliceNdiceS.enums.Role;
@@ -41,8 +42,8 @@ public class Player extends Entity {
     }
 
     public void update() {
-        posY += velY;
         posX += velX;
+        posY += velY;
     }
 
     public void draw(Graphics2D graphics2D) {

@@ -1,5 +1,6 @@
 package com.igorhenss.SliceNdiceS.SliceNdiceS;
 
+import com.igorhenss.SliceNdiceS.SliceNdiceS.entity.Enemy;
 import com.igorhenss.SliceNdiceS.SliceNdiceS.entity.Player;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class GameFrame extends JPanel implements ActionListener {
 
     Timer mainTimer;
     Player player;
+    Enemy goblin;
 
     public GameFrame() {
         setFocusable(true);
@@ -30,6 +32,9 @@ public class GameFrame extends JPanel implements ActionListener {
         Graphics2D graphics2D = (Graphics2D) graphics;
 
         player.draw(graphics2D);
+
+        Enemy++
+        goblin.draw(graphics2D);
     }
 
     @Override
