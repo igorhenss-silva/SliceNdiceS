@@ -4,6 +4,6 @@ public class Dice {
 
     Integer amountOfSides;
     Integer shakeStrenght;
-    Player player;
+//    Player player;
 
 }
