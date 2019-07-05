@@ -9,6 +9,7 @@ import com.igorhenss.SliceNdiceS.SliceNdiceS.enums.Subrole;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,15 +45,40 @@ public class Player extends Entity {
     public void update() {
         posX += velX;
         posY += velY;
+
+        collision();
     }
 
     public void draw(Graphics2D graphics2D) {
         graphics2D.drawImage(getPlayerImage(), posX, posY, null);
+        graphics2D.draw(getBounds());
     }
 
     public Image getPlayerImage() {
         ImageIcon sprite = new ImageIcon("C:/personal_files/SliceNdiceS/src/main/resources/images/player.png");
         return sprite.getImage();
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(posX, posY, getWidth(), getHeight());
+    }
+
+    public void collision() {
+        ArrayList<Enemy> enemies = GameFrame.getEnemyList();
+        for (int i = 0; i < enemies.size(); i++) {
+            Enemy killedEnemy = enemies.get(i);
+            if (getBounds().intersects(killedEnemy.getBounds())) {
+                GameFrame.removeEnemy(killedEnemy);
+            }
+        }
+    }
+
+    private Integer getWidth() {
+        return getPlayerImage().getWidth(null);
+    }
+
+    private Integer getHeight() {
+        return getPlayerImage().getHeight(null);
     }
 
     // METHODS

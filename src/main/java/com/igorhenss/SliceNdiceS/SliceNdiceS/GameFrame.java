@@ -7,14 +7,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class GameFrame extends JPanel implements ActionListener {
 
     private final static String welcomeMessage = "Welcome to SliceNdiceS: a RPG adventure.";
 
-    Timer mainTimer;
-    Player player;
-    Enemy goblin;
+    private Timer mainTimer;
+    private Player player;
+    private static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+    private Random rand = new Random();
+    private Integer enemyCount = rand.nextInt(10);
 
     public GameFrame() {
         setFocusable(true);
@@ -25,22 +29,40 @@ public class GameFrame extends JPanel implements ActionListener {
 
         mainTimer = new Timer(1, this);
         mainTimer.start();
+
+        for (int i = 0; i < enemyCount; i++) {
+            addEnemy(new Enemy(rand.nextInt(1200), rand.nextInt(700)));
+        }
     }
 
     public void paint(Graphics graphics) {
         super.paint(graphics);
         Graphics2D graphics2D = (Graphics2D) graphics;
 
-        player.draw(graphics2D);
+        for (int i = 0; i < enemies.size(); i++) {
+            Enemy goblin = enemies.get(i);
+            goblin.draw(graphics2D);
+        }
 
-        goblin = new Enemy(200, 400);
-        goblin.draw(graphics2D);
+        player.draw(graphics2D);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         player.update();
         repaint();
+    }
+
+    public void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
+
+    public static ArrayList<Enemy> getEnemyList() {
+        return enemies;
+    }
+
+    public static void removeEnemy(Enemy killedEnemy) {
+        enemies.remove(killedEnemy);
     }
 
 }
